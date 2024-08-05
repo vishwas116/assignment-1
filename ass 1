@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+struct Student{
+	int roll_no;
+	float sgpa;
+	string name;
+};
+int main(){
+	int n;
+	cout<<"how many students u want to enter"<<endl;
+	cin>>n;
+	
+	Student students[n];
+	for(int i=0;i<n;i++){
+		cout<<"enter roll_no :";
+		cin>>students[i].roll_no;
+		cout<<"enter sgpa :";
+		cin>>students[i].sgpa;
+		cout<<"enter name :";
+		cin>>students[i].name;
+		cout<<endl;
+	}
+	//bubble sort
+	for(int j=0;j<n-1;j++){
+		for(int k=0;k<n-1-j;k++){
+			if(students[k].roll_no>students[k+1].roll_no){
+				Student temp=students[k];
+				students[k]=students[k+1];
+				students[k+1]=temp;
+			}
+		}
+	}
+	cout<<"sort by roll no :"<<endl;
+	for(int i=0;i<n;i++){
+		cout<<"roll no is :"<<students[i].roll_no<<" sgpa is :"<<students[i].sgpa<<" name is :"<<students[i].name<<endl;
+			
+		
+	}
+	//Insertion sort
+	for(int i=1;i<n;i++){
+		Student temp = students[i];
+		int j= i-1;
+		while(j >=0 && students[j].name>temp.name){
+			students[j+1]=students[j];
+			j--;
+		}
+		students[j+1]=temp;
+	}
+	cout<<"sort by name :"<<endl;
+	for(int i=0;i<n;i++){
+		cout<<" roll no is :"<<students[i].roll_no<<" sgpa is :"<<students[i].sgpa<<" name is :"<<students[i].name<<endl;
+			
+	}
+	//Linear Search
+	cout<<"enter Sgpa to search"<<endl;
+	float search;
+	cin>>search;
+	int a=0;
+	for(int i=0;i<n;i++){
+		if (students[i].sgpa==search){
+			cout<<" roll no is :"<<students[i].roll_no<<" sgpa is :"<<students[i].sgpa<<" name is :"<<students[i].name<<endl;
+			a++;
+		
+		}
+	}
+	if(a==0){
+		cout<<"Invalid input";
+	}
+	return 0;
+	
+}
